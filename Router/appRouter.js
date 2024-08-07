@@ -21,6 +21,10 @@ appRouter.get('/sign-up',(req,res)=>{
     res.sendFile(path.resolve('./pages/sign-up.html'))
 })
 
+appRouter.get('/profile',(req,res)=>{
+    res.sendFile(path.resolve('./pages/profile.html'))
+})
+
 // post
 
 appRouter.post('/sign-in',customizedMulter.single('avatar'),signInService)
