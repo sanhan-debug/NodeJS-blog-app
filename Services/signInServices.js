@@ -6,7 +6,7 @@ export const signInService = async (req, res) => {
   const hasshedPass = bcrypt.hashSync(password, 10);
 
   if (username && name && surname && email && password) {
-    const { filename, destination } = req.file;
+    const { filename } = req.file;
 
     const isExistUser = await userModel.findOne({ username });
     const isExistEmail = await userModel.findOne({ email });
@@ -22,7 +22,7 @@ export const signInService = async (req, res) => {
         surname,
         email,
         password: hasshedPass,
-        photo: `${destination}/${filename}`,
+        photo: `/${filename}`,
       });
 
       res.redirect("/sign-up");
