@@ -10,7 +10,7 @@ export const signUpService = async (req, res) => {
   if (user) {
     const match = await bcrypt.compare(password, user.password);
     if (match) {
-      const token = jwt.sign({user},"nodejs")
+      const token = jwt.sign({user},secret_key)
       res.redirect(`/profile/${user._id}/${token}`)
     } else {
       res.send("password is incorrect");
